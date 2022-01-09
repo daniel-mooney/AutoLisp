@@ -5,10 +5,10 @@
     y_coord (cadr point)
     z_coord (caddr point)
   )
-  (setq opp_point (list (+ x__coord len) (+ y_coord width) z_coord)
+  (setq opp_point (list (+ x_coord len) (+ y_coord width) z_coord))
 )
 
-(defun C:DRAWSTAIRS (/ total_length height stair_len stair_width stair_thickness)
+(defun c:DRAWSTAIRS (/ total_length height stair_len stair_width stair_thickness)
   
   ; Retrieve Dimensions from the User
   (setq
@@ -20,6 +20,9 @@
     stair_thickness (getreal "Enter stair thickness: ")
     start_point (getpoint "Select stair starting point: ")
   )
+  
+  ; (princ "Test 1")
+  ; (princ)
   
   ; Calculate stair overlapping length
   (setq
@@ -33,6 +36,9 @@
     vertical_dist (- vertical_gain stair_thickness)
   )
   
+  ; (princ "Test 2")
+  ; (princ)
+  
   ; Draw stairs
   (setq ref_point start_point)  ; Top right corner of the previous step
   
@@ -43,7 +49,10 @@
       pt2 (findopp pt1 stair_len stair_width)   ; Bottom upper left corner of stair
     )
     
-    (command ".box" pt1 pt2 thickness "")
+    ; (princ "Test 3")
+    ; (princ)
+    
+    (command ".box" pt1 pt2 stair_thickness "")
     
     ; Set new ref_point
     (setq
@@ -53,6 +62,8 @@
       
       ref_point (list (+ x_coord stair_len overlap) y_coord (+ z_coord stair_thickness) )
     )
+    ; (princ "Test 4")
+    ; (princ)
   )
 )
 
