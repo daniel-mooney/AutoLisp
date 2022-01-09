@@ -18,7 +18,7 @@
     stair_len (getreal "Enter individual stair length: ")
     stair_width (getreal "Enter stair width: ")
     stair_thickness (getreal "Enter stair thickness: ")
-    start_point (getpoint "Select stair starting point")
+    start_point (getpoint "Select stair starting point: ")
   )
   
   ; Calculate stair overlapping length
@@ -30,7 +30,7 @@
   ; Calculate vertical distance between stairs
   (setq
     vertical_gain (/ height num_stairs)
-    vertical_dist (- vertical_gain thickness)
+    vertical_dist (- vertical_gain stair_thickness)
   )
   
   ; Draw stairs
