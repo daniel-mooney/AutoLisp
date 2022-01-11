@@ -12,17 +12,14 @@
   
   ; Retrieve Dimensions from the User
   (setq
+    start_point (getpoint "Select stair starting point: ")
     total_length (getreal "Enter total length: ")
     height (getreal "Enter total height: ")
     num_stairs (getint "Enter number of stairs: ")
     stair_len (getreal "Enter individual stair length: ")
     stair_width (getreal "Enter stair width: ")
     stair_thickness (getreal "Enter stair thickness: ")
-    start_point (getpoint "Select stair starting point: ")
   )
-  
-  ; (princ "Test 1")
-  ; (princ)
   
   ; Calculate stair overlapping length
   (setq
@@ -36,34 +33,50 @@
     vertical_dist (- vertical_gain stair_thickness)
   )
   
-  ; (princ "Test 2")
-  ; (princ)
-  
   ; Draw stairs
   (setq ref_point start_point)  ; Top right corner of the previous step
   
-  (repeat num_stairs
+  (repeat num_stairs (
+    
+    (princ "Ref point:")
+    (princ ref_point)
+    (princ "\n")
+    (princ)
+    
     (setq
       z_coord (caddr ref_point)
       pt1 (subst (+ z_coord vertical_dist) z_coord ref_point)   ; Bottom lower right corner of stair
       pt2 (findopp pt1 stair_len stair_width)   ; Bottom upper left corner of stair
     )
     
+    (princ "Lower right: ")
+    (princ pt1)
+    (princ "\n")
+    (princ)
+    
+    (princ "Opposite: ")
+    (princ pt2)
+    (princ "\n")
+    (princ)
+    
     ; (princ "Test 3")
+    ; (princ)
+    
+    ; (princ "Numbers:")
+    ; (princ pt2)
+    ; (princ stair_thickness)
     ; (princ)
     
     (command ".box" pt1 pt2 stair_thickness "")
     
     ; Set new ref_point
     (setq
-      x_coord (car ref_point)
-      y_coord (cadr ref_point)
-      z_coord (caddr ref_point)
+      x_coord (car pt1)
+      y_coord (cadr pt1)
+      z_coord (caddr pt1)
       
       ref_point (list (+ x_coord stair_len overlap) y_coord (+ z_coord stair_thickness) )
     )
-    ; (princ "Test 4")
-    ; (princ)
-  )
+  ))
 )
 

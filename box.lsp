@@ -1,18 +1,21 @@
-(defun C:DRAWBOX (/ width height depth rect pt1 pt2 pt3)
-  ; Takes in user input for width, height and a starting point then draws a rectangle based off this information
+(defun drawBox (pt1 len width height / pt2 pt3 pt4 pt5 pt6 pt7 pt8)
+  ; Draws a 3D box of the specified dimensions, pt1 represents the lower left of the front view
   
-  ; Collect user input
+  ; Find Base vertices
   (setq
-    pt1 (getpoint "Enter lower-left corner: ")
-    width (getreal "Enter width: ")
-    height (getreal "Enter height: ")
-    depth (getreal "Enter depth: ")
+    pt2 (polar pt1 0 len)   ; Base - lower right
+    pt3 (polar pt2 (/ pi 2) height)   ; Base - upper right
+    pt4 (polar pt1 (/ pi 2) height)   ; Base - upper left
   )
   
-  ; Find corners of rectangle and draw
+  ; Find top vertices, each corresponds to the base vertice immediately below
   (setq
-    pt2 (polar pt1 0 width)
-    pt3 (polar pt2 (/ pi 2) height)
-  )  
-  (command ".box" pt1 pt3 depth"")
+    pt5 (list (car pt1) (cadr pt1) (+ (caddr pt1) height))
+    pt6 (list (car pt2) (cadr pt2) (+ (caddr pt2) height))
+    pt7 (list (car pt3) (cadr pt3) (+ (caddr pt3) height))
+    pt8 (list (car pt4) (cadr pt4) (+ (caddr pt4) height))
+  )
+  
+  ; Draw lines - Base
+  (command)
 )
