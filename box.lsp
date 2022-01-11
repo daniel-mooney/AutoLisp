@@ -16,6 +16,12 @@
     pt8 (list (car pt4) (cadr pt4) (+ (caddr pt4) height))
   )
   
-  ; Draw lines - Base
-  (command)
+  ; Draw lines
+  (command ".line" pt1 pt2 pt3 pt4 pt1 "")  ; Base
+  (command ".line" pt5 pt6 pt7 pt8 pt5 "")  ; Top
+  
+  (command ".line" pt1 pt5 "")
+  (command ".line" pt2 pt6 "")
+  (command ".line" pt3 pt7 "")
+  (command ".line" pt4 pt8 "")  
 )
