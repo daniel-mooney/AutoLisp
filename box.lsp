@@ -25,3 +25,14 @@
   (command ".line" pt3 pt7 "")
   (command ".line" pt4 pt8 "")  
 )
+
+(defun c:DRAWBOX ()
+  (setq
+    point (getpoint "Enter point: ")
+    len (getreal "Enter length: ")
+    width (getreal "Enter width:")
+    height (getreal "Enter height: ")
+  )
+  
+  (drawBox point len width height)
+)
