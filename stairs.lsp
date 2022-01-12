@@ -34,9 +34,7 @@
   )
   
   ; Draw stairs
-  (setq ref_point start_point)  ; Top right corner of the previous step
-  
-  
+  (setq ref_point start_point)  ; Top right corner of the previous step  
   
   (repeat num_stairs
        
