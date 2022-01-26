@@ -21,6 +21,10 @@
     stair_thickness (getreal "Enter stair thickness: ")
   )
   
+  ; Verify user input
+  (if )
+  
+  
   ; Calculate stair overlapping length
   (setq
     length_diff (- total_length (* num_stairs stair_len) )
@@ -46,7 +50,7 @@
     (command "._box" pt1 pt2 stair_thickness "")
     
     ; Set new reference point
-    (setq
+    (setqf
       x_coord (+ (car ref_point) stair_len overlap)
       y_coord (cadr ref_point)
       z_coord (+ (caddr ref_point) vertical_gain)
@@ -55,4 +59,3 @@
     )
   )
 )
-

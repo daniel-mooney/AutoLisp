@@ -1,45 +1,12 @@
-(defun drawBox (pt1 len width height / pt2 pt3 pt4 pt5 pt6 pt7 pt8)
-  ; Draws a 3D box of the specified dimensions, pt1 represents the lower left of the front view
-  
-  ; Find Base vertices
+(defun c:test ()
   (setq
-    pt2 (polar pt1 0 len)   ; Base - lower right
-    pt3 (polar pt2 (/ pi 2) height)   ; Base - upper right
-    pt4 (polar pt1 (/ pi 2) height)   ; Base - upper left
+    a (list 3 2 1)
+    b (list 3 2 1)
   )
   
-  ; Find top vertices, each corresponds to the base vertice immediately below
-  (setq
-    pt5 (list (car pt1) (cadr pt1) (+ (caddr pt1) height))
-    pt6 (list (car pt2) (cadr pt2) (+ (caddr pt2) height))
-    pt7 (list (car pt3) (cadr pt3) (+ (caddr pt3) height))
-    pt8 (list (car pt4) (cadr pt4) (+ (caddr pt4) height))
+  (if (equal a b)
+    (print "Equal")
+    (print "Not Equal")
   )
-  
-  ; Draw lines
-  (command ".line" pt1 pt2 pt3 pt4 pt1 "")  ; Base
-  (command ".line" pt5 pt6 pt7 pt8 pt5 "")  ; Top
-  
-  (command ".line" pt1 pt5 "")
-  (command ".line" pt2 pt6 "")
-  (command ".line" pt3 pt7 "")
-  (command ".line" pt4 pt8 "")  
-)
-
-(defun c:DRAWBOXS ()
-  
-  (setq
-    point (getpoint "Select starting point: ")
-    total (getint "Enter number of boxes: ")
-    len (getreal "Enter box lengh: ")
-    width (getreal "Enter box width: ")
-    height (getreal "Enter box height: ")
-    sep (getreal "Enter seperation length: ")
-  )
-  
-  (repeat total 
-    (drawBox point len width height)
-    
-    (setq point (list (+ (car point) sep len) (cadr point) (caddr point) ))
-  )
+  (princ)
 )
