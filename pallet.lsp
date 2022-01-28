@@ -98,5 +98,6 @@
   (command "._array" inner_plank "" "r" total_inner_planks 1 (+ INNER_PLANK_WIDTH upper_plank_gap) )
   (setq inner_plank nil)  
   
-  (setvar "OSMODE" snap_value)
+  
+  (setvar "OSMODE" snap_value) ; Reset Object Snap
 )
