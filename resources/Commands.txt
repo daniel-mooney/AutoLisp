@@ -1,0 +1,7 @@
+BOX - (command "._box" pt1 pt2 height)
+ARRAYRECT - (command "._array" en1 [en2 ...] "" "r" rows columns rowDist colDist)
+BLOCK - (command "._block" blockName insertionPoint ss "")
+INSERT - (command "._insert" blockName insertionPoint scaleFactor rotationAngle "")
+CHPROP - (command "._chprop" ss "" propChange changeTo "")
+PEDIT - (command "._pedit" ss ["Y/N"] "mode" "_all" "" "")	// Y/N required when selected objects are not polylines
+LAYER - (command "._layer" "mode" LayerName)
