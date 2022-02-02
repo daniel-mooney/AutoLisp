@@ -2,7 +2,8 @@
   (load "C:\\Users\\danie\\OneDrive\\Documents\\AutoCAD\\AutoLisp\\ReadCSV-V1-3.lsp")
   
   (setq
-    file (getfiled "Instruction File" "" "csv" 0)
+    f_prefix (getvar "DWGPREFIX")
+    file (getfiled "Instruction File" f_prefix "csv" 0)
   )
   
   (setq line (LM:readcsv file))
