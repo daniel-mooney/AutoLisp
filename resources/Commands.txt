@@ -7,3 +7,4 @@ PEDIT - (command "._pedit" ss ["Y/N"] "mode" "_all" "" "")	// Y/N required when 
 LAYER - (command "._layer" "mode" LayerName)
 ROTATE - (command "._rotate" ss "" axisPoint rotAng)
 MOVE - (command "._move" ss "" point0 point1)   // Move from point0 to point1
+LAYDEL - (command "._laydel" "_name" layerName "" "Y")
